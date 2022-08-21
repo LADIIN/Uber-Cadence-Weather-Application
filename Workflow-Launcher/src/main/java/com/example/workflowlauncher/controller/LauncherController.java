@@ -26,8 +26,8 @@ public class LauncherController {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 
-    @PostMapping("/launch")
-    ResponseEntity<WeatherInfoDto> launchWeatherWorkflow(@RequestParam String city) {
+    @PostMapping("/weather")
+    ResponseEntity<WeatherInfoDto> getWeatherInfo(@RequestParam String city) {
         WeatherInfoDto weatherInfoDto = launcherService.getWeatherInfo(city);
         return ResponseEntity.ok(weatherInfoDto);
     }
