@@ -2,8 +2,8 @@ package com.example.activityworker.service.impl;
 
 import com.example.activityworker.dto.WeatherInfoDto;
 import com.example.activityworker.service.RequestingWeatherInfoService;
-import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -12,12 +12,16 @@ import java.time.LocalTime;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class RequestingWeatherInfoServiceImpl implements RequestingWeatherInfoService {
     @Value("${openweathermap.appid")
     private String appid;
 
     private final WebClient webClient;
+
+    @Autowired
+    public RequestingWeatherInfoServiceImpl(WebClient webClient) {
+        this.webClient = webClient;
+    }
 
     @Override
     public Optional<WeatherInfoDto> getWeatherInfo(String city) {
