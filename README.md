@@ -4,9 +4,10 @@ Create an Uber Cadence application.
 
 It should contain 3 services:
 
-Activity Worker Spring Boot application.
-Workflow worker application.
-Workflow launcher Spring boot application.
+- Activity Worker Spring Boot application.
+- Workflow worker application.
+- Workflow launcher Spring boot application.
+
 Use docker environment with Cadence to launch it locally.
 
 Activity worker should contain 2 simple activities.
