@@ -1,8 +1,8 @@
 package com.example.workflowlauncher.service;
 
 import com.example.activityworker.dto.WeatherInfoDto;
+import com.example.activityworker.workflow.WeatherWorkflow;
 import com.example.workflowlauncher.exception.ServiceException;
-import com.example.workflowworker.workflow.WeatherWorkflow;
 import com.uber.cadence.client.WorkflowClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

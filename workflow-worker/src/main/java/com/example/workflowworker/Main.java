@@ -1,6 +1,7 @@
 package com.example.workflowworker;
 
-import com.example.workflowworker.workflow.WeatherWorkflowImpl;
+
+import com.example.activityworker.workflow.WeatherWorkflowImpl;
 
 public class Main {
     public static void main(String[] args) {

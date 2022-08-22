@@ -1,4 +1,4 @@
-package com.example.workflowworker.workflow;
+package com.example.activityworker.workflow;
 
 import com.example.activityworker.dto.WeatherInfoDto;
 import com.uber.cadence.workflow.WorkflowMethod;

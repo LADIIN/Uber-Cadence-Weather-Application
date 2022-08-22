@@ -1,4 +1,4 @@
-package com.example.workflowworker.workflow;
+package com.example.activityworker.workflow;
 
 import com.example.activityworker.activity.RequestingWeatherActivity;
 import com.example.activityworker.activity.SavingWeatherInfoActivity;
