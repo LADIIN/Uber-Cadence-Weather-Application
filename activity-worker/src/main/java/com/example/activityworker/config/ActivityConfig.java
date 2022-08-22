@@ -4,6 +4,7 @@ import com.example.activityworker.activity.RequestingWeatherActivity;
 import com.example.activityworker.activity.SavingWeatherInfoActivity;
 import com.example.activityworker.activity.impl.RequestingWeatherActivityImpl;
 import com.example.activityworker.exception.DomainRegistrationException;
+import com.uber.cadence.DomainAlreadyExistsError;
 import com.uber.cadence.RegisterDomainRequest;
 import com.uber.cadence.client.WorkflowClient;
 import com.uber.cadence.client.WorkflowClientOptions;
@@ -21,10 +22,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ActivityConfig {
 
-    @Value("${cadence.domain")
+    @Value("${cadence.domain}")
     private String domain;
 
-    @Value("${cadence.task-list")
+    @Value("${cadence.task-list}")
     private String taskList;
 
     @Value("${retention.period.in.days}")
@@ -40,13 +41,12 @@ public class ActivityConfig {
     }
 
     private void registerDomain() {
-        IWorkflowService cadenceService = new WorkflowServiceTChannel(ClientOptions.defaultInstance());
+        IWorkflowService service = new WorkflowServiceTChannel(ClientOptions.defaultInstance());
         RegisterDomainRequest request = new RegisterDomainRequest();
-        request.setName(domain)
-                .setEmitMetric(false)
-                .setWorkflowExecutionRetentionPeriodInDays(retentionPeriodInDays);
+        request.setName(domain).setWorkflowExecutionRetentionPeriodInDays(retentionPeriodInDays);
         try {
-            cadenceService.RegisterDomain(request);
+            service.RegisterDomain(request);
+        } catch (DomainAlreadyExistsError ignored) {
         } catch (TException e) {
             throw new DomainRegistrationException(e);
         }
